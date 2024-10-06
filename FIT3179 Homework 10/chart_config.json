@@ -1,0 +1,81 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "World Map with Australia's Median Weekly Earnings (2023)",
+    "width": 800,
+    "height": 600,
+    "layer": [
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_0_countries.geojson",
+          "format": {"type": "geojson"}
+        },
+        "mark": {
+          "type": "geoshape",
+          "fill": "#d3d3d3",  
+          "stroke": "white",
+          "strokeWidth": 0.5
+        }
+      },
+      {
+        "data": {
+          "graticule": {"step": [30, 30]}  
+        },
+        "mark": {
+          "type": "geoshape",
+          "stroke": "lightgray",
+          "strokeWidth": 0.5
+        }
+      },
+      {
+        "data": {
+          "url": "ne_10m_admin_1_states_provinces.json",  
+          "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+        },
+        "transform": [
+          {
+            "lookup": "properties.name",  
+            "from": {
+              "data": {
+                "values": [
+                  {"State/Territory": "Australian Capital Territory", "2023 ($)": 1550},
+                  {"State/Territory": "Northern Territory", "2023 ($)": 1427},
+                  {"State/Territory": "New South Wales", "2023 ($)": 1339},
+                  {"State/Territory": "Western Australia", "2023 ($)": 1339},
+                  {"State/Territory": "Queensland", "2023 ($)": 1300},
+                  {"State/Territory": "Victoria", "2023 ($)": 1280},
+                  {"State/Territory": "Tasmania", "2023 ($)": 1210},
+                  {"State/Territory": "South Australia", "2023 ($)": 1200}
+                ]
+              },
+              "key": "State/Territory",
+              "fields": ["2023 ($)"]
+            }
+          }
+        ],
+        "mark": {
+          "type": "geoshape",
+          "stroke": "white",
+          "strokeWidth": 0.5
+        },
+        "encoding": {
+          "color": {
+            "field": "2023 ($)",
+            "type": "quantitative",
+            "scale": {
+              "scheme": "blues"  
+            }
+          },
+          "tooltip": [
+            {"field": "properties.name", "type": "nominal", "title": "State/Territory"},
+            {"field": "2023 ($)", "type": "quantitative", "title": "Median Weekly Earnings"}
+          ]
+        }
+      }
+    ],
+    "projection": {
+      "type": "equalEarth",  
+      "center": [135.35, -22.46],  
+      "scale": 600  
+    }
+  }
+  
