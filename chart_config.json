@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "World Map with Australia's Median Weekly Earnings (2023)",
-    "width": 900,
+    "width": 800,
     "height": 600,
     "layer": [
       {
