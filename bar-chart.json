@@ -1,0 +1,51 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "values": [
+        {"State": "ACT", "Gender": "Male", "Earnings": 1600},
+        {"State": "ACT", "Gender": "Female", "Earnings": 1500},
+        {"State": "NSW", "Gender": "Male", "Earnings": 1400},
+        {"State": "NSW", "Gender": "Female", "Earnings": 1250},
+        {"State": "VIC", "Gender": "Male", "Earnings": 1350},
+        {"State": "VIC", "Gender": "Female", "Earnings": 1200},
+        {"State": "QLD", "Gender": "Male", "Earnings": 1370},
+        {"State": "QLD", "Gender": "Female", "Earnings": 1230},
+        {"State": "SA", "Gender": "Male", "Earnings": 1250},
+        {"State": "SA", "Gender": "Female", "Earnings": 1150},
+        {"State": "WA", "Gender": "Male", "Earnings": 1450},
+        {"State": "WA", "Gender": "Female", "Earnings": 1300},
+        {"State": "TAS", "Gender": "Male", "Earnings": 1300},
+        {"State": "TAS", "Gender": "Female", "Earnings": 1200},
+        {"State": "NT", "Gender": "Male", "Earnings": 1500},
+        {"State": "NT", "Gender": "Female", "Earnings": 1400},
+        {"State": "AUS", "Gender": "Male", "Earnings": 1450},
+        {"State": "AUS", "Gender": "Female", "Earnings": 1300}
+      ]
+    },
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "State", 
+        "type": "nominal", 
+        "title": "State/Territory", 
+        "axis": {"labelAngle": -45}  
+      },
+      "y": {
+        "field": "Earnings", 
+        "type": "quantitative", 
+        "title": "Median Weekly Earnings ($)"
+      },
+      "color": {
+        "field": "Gender", 
+        "type": "nominal", 
+        "title": "Gender",
+        "scale": {"range": ["#1f77b4", "#ff7f0e"]}  
+      },
+      "tooltip": [
+        {"field": "State", "type": "nominal", "title": "State/Territory"},
+        {"field": "Gender", "type": "nominal", "title": "Gender"},
+        {"field": "Earnings", "type": "quantitative", "title": "Earnings ($)"}
+      ]
+    }
+  }
+  

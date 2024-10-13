@@ -1,0 +1,144 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "World Map with Australia's Median Weekly Earnings (2019-2024)",
+  "width": 800,
+  "height": 600,
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_1_states_provinces_lakes.json",
+        "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#d3d3d3",
+        "stroke": "white",
+        "strokeWidth": 0.5
+      }
+    },
+    {
+      "data": {
+        "graticule": {"step": [30, 30]}
+      },
+      "mark": {
+        "type": "geoshape",
+        "stroke": "lightgray",
+        "strokeWidth": 0.5
+      }
+    },
+    {
+      "data": {
+        "url": "ne_10m_admin_1_states_provinces.json",
+        "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.name",
+          "from": {
+            "data": {
+              "values": [
+                {"State/Territory": "Australian Capital Territory", "Year": "2019", "Earnings": 1400},
+                {"State/Territory": "Australian Capital Territory", "Year": "2020", "Earnings": 1450},
+                {"State/Territory": "Australian Capital Territory", "Year": "2021", "Earnings": 1500},
+                {"State/Territory": "Australian Capital Territory", "Year": "2022", "Earnings": 1525},
+                {"State/Territory": "Australian Capital Territory", "Year": "2023", "Earnings": 1550},
+                {"State/Territory": "Australian Capital Territory", "Year": "2024", "Earnings": 1570},
+
+                {"State/Territory": "Northern Territory", "Year": "2019", "Earnings": 1200},
+                {"State/Territory": "Northern Territory", "Year": "2020", "Earnings": 1220},
+                {"State/Territory": "Northern Territory", "Year": "2021", "Earnings": 1250},
+                {"State/Territory": "Northern Territory", "Year": "2022", "Earnings": 1300},
+                {"State/Territory": "Northern Territory", "Year": "2023", "Earnings": 1427},
+                {"State/Territory": "Northern Territory", "Year": "2024", "Earnings": 1450},
+
+                {"State/Territory": "New South Wales", "Year": "2019", "Earnings": 1100},
+                {"State/Territory": "New South Wales", "Year": "2020", "Earnings": 1150},
+                {"State/Territory": "New South Wales", "Year": "2021", "Earnings": 1200},
+                {"State/Territory": "New South Wales", "Year": "2022", "Earnings": 1300},
+                {"State/Territory": "New South Wales", "Year": "2023", "Earnings": 1339},
+                {"State/Territory": "New South Wales", "Year": "2024", "Earnings": 1350},
+
+                {"State/Territory": "Western Australia", "Year": "2019", "Earnings": 1250},
+                {"State/Territory": "Western Australia", "Year": "2020", "Earnings": 1280},
+                {"State/Territory": "Western Australia", "Year": "2021", "Earnings": 1300},
+                {"State/Territory": "Western Australia", "Year": "2022", "Earnings": 1325},
+                {"State/Territory": "Western Australia", "Year": "2023", "Earnings": 1339},
+                {"State/Territory": "Western Australia", "Year": "2024", "Earnings": 1365},
+
+                {"State/Territory": "Queensland", "Year": "2019", "Earnings": 1020},
+                {"State/Territory": "Queensland", "Year": "2020", "Earnings": 1070},
+                {"State/Territory": "Queensland", "Year": "2021", "Earnings": 1120},
+                {"State/Territory": "Queensland", "Year": "2022", "Earnings": 1170},
+                {"State/Territory": "Queensland", "Year": "2023", "Earnings": 1300},
+                {"State/Territory": "Queensland", "Year": "2024", "Earnings": 1325},
+
+                {"State/Territory": "Victoria", "Year": "2019", "Earnings": 1050},
+                {"State/Territory": "Victoria", "Year": "2020", "Earnings": 1100},
+                {"State/Territory": "Victoria", "Year": "2021", "Earnings": 1150},
+                {"State/Territory": "Victoria", "Year": "2022", "Earnings": 1200},
+                {"State/Territory": "Victoria", "Year": "2023", "Earnings": 1280},
+                {"State/Territory": "Victoria", "Year": "2024", "Earnings": 1295},
+
+                {"State/Territory": "Tasmania", "Year": "2019", "Earnings": 950},
+                {"State/Territory": "Tasmania", "Year": "2020", "Earnings": 970},
+                {"State/Territory": "Tasmania", "Year": "2021", "Earnings": 1000},
+                {"State/Territory": "Tasmania", "Year": "2022", "Earnings": 1050},
+                {"State/Territory": "Tasmania", "Year": "2023", "Earnings": 1210},
+                {"State/Territory": "Tasmania", "Year": "2024", "Earnings": 1220},
+
+                {"State/Territory": "South Australia", "Year": "2019", "Earnings": 980},
+                {"State/Territory": "South Australia", "Year": "2020", "Earnings": 1000},
+                {"State/Territory": "South Australia", "Year": "2021", "Earnings": 1050},
+                {"State/Territory": "South Australia", "Year": "2022", "Earnings": 1100},
+                {"State/Territory": "South Australia", "Year": "2023", "Earnings": 1200},
+                {"State/Territory": "South Australia", "Year": "2024", "Earnings": 1225}
+              ]
+            },
+            "key": "State/Territory",
+            "fields": ["Earnings"]
+          }
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "white",
+        "strokeWidth": 0.5
+      },
+      "encoding": {
+        "color": {
+          "field": "Earnings",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "blues"
+          },
+          "title": "Median Weekly Earnings"
+        },
+        "tooltip": [
+          {"field": "properties.name", "type": "nominal", "title": "State/Territory"},
+          {"field": "Earnings", "type": "quantitative", "title": "Median Weekly Earnings"}
+        ]
+      }
+    }
+  ],
+  "params": [
+    {
+      "name": "selectedYear",
+      "value": "2023",
+      "bind": {
+        "input": "select",
+        "options": ["2019", "2020", "2021", "2022", "2023", "2024"],
+        "name": "Select Year: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.Year == selectedYear"
+    }
+  ],
+  "projection": {
+    "type": "equalEarth",
+    "center": [135.35, -22.46],
+    "scale": 600
+  }
+}

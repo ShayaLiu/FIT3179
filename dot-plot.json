@@ -1,0 +1,80 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "values": [
+        {"State": "NSW", "Year": "2019", "Earnings": 1100},
+        {"State": "NSW", "Year": "2020", "Earnings": 1150},
+        {"State": "NSW", "Year": "2021", "Earnings": 1200},
+        {"State": "NSW", "Year": "2022", "Earnings": 1300},
+        {"State": "NSW", "Year": "2023", "Earnings": 1339},
+        {"State": "NSW", "Year": "2024", "Earnings": 1350},
+  
+        {"State": "VIC", "Year": "2019", "Earnings": 1050},
+        {"State": "VIC", "Year": "2020", "Earnings": 1100},
+        {"State": "VIC", "Year": "2021", "Earnings": 1150},
+        {"State": "VIC", "Year": "2022", "Earnings": 1200},
+        {"State": "VIC", "Year": "2023", "Earnings": 1222},
+        {"State": "VIC", "Year": "2024", "Earnings": 1235},
+  
+        {"State": "QLD", "Year": "2019", "Earnings": 1020},
+        {"State": "QLD", "Year": "2020", "Earnings": 1070},
+        {"State": "QLD", "Year": "2021", "Earnings": 1120},
+        {"State": "QLD", "Year": "2022", "Earnings": 1170},
+        {"State": "QLD", "Year": "2023", "Earnings": 1215},
+        {"State": "QLD", "Year": "2024", "Earnings": 1225},
+  
+        {"State": "SA", "Year": "2019", "Earnings": 980},
+        {"State": "SA", "Year": "2020", "Earnings": 1000},
+        {"State": "SA", "Year": "2021", "Earnings": 1050},
+        {"State": "SA", "Year": "2022", "Earnings": 1100},
+        {"State": "SA", "Year": "2023", "Earnings": 1150},
+        {"State": "SA", "Year": "2024", "Earnings": 1170},
+  
+        {"State": "WA", "Year": "2019", "Earnings": 1250},
+        {"State": "WA", "Year": "2020", "Earnings": 1280},
+        {"State": "WA", "Year": "2021", "Earnings": 1300},
+        {"State": "WA", "Year": "2022", "Earnings": 1325},
+        {"State": "WA", "Year": "2023", "Earnings": 1350},
+        {"State": "WA", "Year": "2024", "Earnings": 1365},
+  
+        {"State": "TAS", "Year": "2019", "Earnings": 950},
+        {"State": "TAS", "Year": "2020", "Earnings": 970},
+        {"State": "TAS", "Year": "2021", "Earnings": 1000},
+        {"State": "TAS", "Year": "2022", "Earnings": 1050},
+        {"State": "TAS", "Year": "2023", "Earnings": 1150},
+        {"State": "TAS", "Year": "2024", "Earnings": 1170},
+  
+        {"State": "NT", "Year": "2019", "Earnings": 1200},
+        {"State": "NT", "Year": "2020", "Earnings": 1220},
+        {"State": "NT", "Year": "2021", "Earnings": 1250},
+        {"State": "NT", "Year": "2022", "Earnings": 1300},
+        {"State": "NT", "Year": "2023", "Earnings": 1427},
+        {"State": "NT", "Year": "2024", "Earnings": 1450},
+  
+        {"State": "ACT", "Year": "2019", "Earnings": 1400},
+        {"State": "ACT", "Year": "2020", "Earnings": 1450},
+        {"State": "ACT", "Year": "2021", "Earnings": 1500},
+        {"State": "ACT", "Year": "2022", "Earnings": 1525},
+        {"State": "ACT", "Year": "2023", "Earnings": 1550},
+        {"State": "ACT", "Year": "2024", "Earnings": 1570},
+  
+        {"State": "AUS", "Year": "2019", "Earnings": 1000},
+        {"State": "AUS", "Year": "2020", "Earnings": 1050},
+        {"State": "AUS", "Year": "2021", "Earnings": 1100},
+        {"State": "AUS", "Year": "2022", "Earnings": 1150},
+        {"State": "AUS", "Year": "2023", "Earnings": 1200},
+        {"State": "AUS", "Year": "2024", "Earnings": 1220}
+      ]
+    },
+    "mark": "point",
+    "encoding": {
+      "x": {"field": "Earnings", "type": "quantitative", "title": "Median Weekly Earnings ($)"},
+      "y": {"field": "State", "type": "nominal", "title": "State/Territory"},
+      "color": {"field": "State", "type": "nominal"},
+      "tooltip": [
+        {"field": "State", "type": "nominal", "title": "State/Territory"},
+        {"field": "Earnings", "type": "quantitative", "title": "Earnings ($)"}
+      ]
+    }
+  }
+  

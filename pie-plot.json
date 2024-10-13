@@ -1,0 +1,44 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Pie chart showing average weekly earnings by industry in 2024",
+    "data": {
+      "values": [
+        {"Industry": "Mining", "Earnings": 3015.30},
+        {"Industry": "Manufacturing", "Earnings": 1706.70},
+        {"Industry": "Electricity, gas, water & waste services", "Earnings": 2243.80},
+        {"Industry": "Construction", "Earnings": 1821.80},
+        {"Industry": "Wholesale trade", "Earnings": 1790.60},
+        {"Industry": "Retail trade", "Earnings": 1454.50},
+        {"Industry": "Accommodation & food services", "Earnings": 1421.00},
+        {"Industry": "Transport, postal & warehousing", "Earnings": 1893.20},
+        {"Industry": "Information media & telecommunications", "Earnings": 2437.20},
+        {"Industry": "Financial & insurance services", "Earnings": 2283.20},
+        {"Industry": "Rental, hiring & real estate services", "Earnings": 1789.60},
+        {"Industry": "Professional, scientific & technical services", "Earnings": 2245.40},
+        {"Industry": "Administrative & support services", "Earnings": 1723.70},
+        {"Industry": "Public administration & safety", "Earnings": 2036.10},
+        {"Industry": "Education & training", "Earnings": 2026.40},
+        {"Industry": "Health care & social assistance", "Earnings": 1902.40},
+        {"Industry": "Arts & recreation services", "Earnings": 1797.30},
+        {"Industry": "Other services", "Earnings": 1457.80}
+      ]
+    },
+    "mark": "arc",
+    "encoding": {
+      "theta": {"field": "Earnings", "type": "quantitative"},
+      "color": {
+        "field": "Industry",
+        "type": "nominal",
+        "legend": {
+          "title": "Industry",
+          "orient": "right"
+        }
+      },
+      "tooltip": [
+        {"field": "Industry", "type": "nominal", "title": "Industry"},
+        {"field": "Earnings", "type": "quantitative", "title": "Average Weekly Earnings"}
+      ]
+    },
+    "view": {"stroke": null}
+  }
+  

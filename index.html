@@ -1,39 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Choropleth Map and Interactive Line Chart</title>
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  <style>
-    /* Add some basic styling for layout */
-    #container {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 20px;
-    }
-    .vis {
-      width: 45%;
-    }
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploring Australia's Earnings: A Journey Through States</title>
 
-  <h1>Median Weekly Earnings by State in Australia (2023)</h1>
-  
-  <!-- Container for the map and the interactive visualization -->
-  <div id="container">
-    <!-- Map container -->
-    <div id="vis" class="vis"></div> 
+    <!-- Include Vega and Vega-Lite Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    
+    <!-- Link to External Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
 
-    <!-- Interactive line chart container -->
-    <div id="interactive-vis" class="vis"></div>
-  </div>
+    <!-- Link to External JavaScript -->
+    <script src="vis.js"></script>
+  </head>
 
-  <!-- Link to the JavaScript file -->
-  <script src="chart.js"></script>
+  <body>
+    <h1><center> Discovering Australia’s Economic Landscape</center></h1>
+    
+    <h3 style="color: white; background-color: black; font-family: 'Gill Sans', sans-serif;">
+      <center>The Tale of Changing Incomes</center>
+    </h3>
+    
+    <div class="grid-container">
 
-</body>
+      <!-- Storytelling Context: Introduce the Theme -->
+      <div id="textdetails">
+        <h2><center>Regional Differences in Median Earnings</center></h2>
+        <p>
+        The map reveals significant regional differences in earnings. For example, <strong>the Australian Capital Territory (ACT)</strong> has consistently had the highest earnings, 
+        surpassing $1,500 per week, while <strong>Tasmania</strong> and <strong>South Australia</strong> have the lowest earnings, around $1,200 in 2023. <strong>Queensland</strong> falls in between, with earnings at $1,300.
+        </p>
+      </div>  
+      
+      <!-- Choropleth Map Visualization -->
+      <div id="map"></div>
+      
+      <!-- Explain Data and Approach -->
+      <div id="textdetails">
+        <h2><center>Steady Growth Over Time</center></h2>
+        <p>
+          The data we use in this story spans from 2019 to 2024. It includes observations of <strong>median weekly earnings</strong> from Australia’s states and territories, showing us how earnings have evolved in recent years.
+          <br><br>
+          - <strong>State</strong>: Refers to different regions in Australia, such as New South Wales and Victoria.<br>
+          - <strong>Year</strong>: The time period observed, ranging from 2019 to 2024.<br>
+          - <strong>Earnings</strong>: The median weekly income, in Australian dollars, representing the middle of the earnings distribution for each state.<br>
+          <br>
+          The line chart shows a consistent upward trend in median weekly earnings across all states and territories. This suggests a general increase in wages across Australia, though the rate of increase varies by region. 
+          For instance, Western Australia and New South Wales show relatively steady increases,  while ACT leads with the steepest growth.
+        </p>
+      </div>
+      
+      <!-- Line Chart Visualization -->
+      <div id="line"></div>
+      
+      <!-- Story-driven Insights -->
+      <div id="textdetails">
+        <h2><center>What Does the Data Tell Us?</center></h2>
+        <p>
+          As we dive deeper into the numbers, a story emerges:
+          <ul>
+            <li><strong>Regional Differences:</strong> The map reveals significant regional differences in earnings. For example, the <strong>Australian Capital Territory (ACT)</strong> consistently has the highest earnings, surpassing $1,500 per week, while <strong>Tasmania</strong> and <strong>South Australia</strong> lag behind, hovering around $1,200 in 2023.</li>
+            <li><strong>Steady Growth:</strong> The line chart shows a consistent upward trend in median weekly earnings across all states and territories. This reflects a <strong>general increase in wages</strong>, though the rate of growth varies across regions.</li>
+            <li><strong>Widening Income Gap:</strong> There is a noticeable <strong>widening income gap</strong> between higher-earning regions (such as ACT and Northern Territory) and lower-earning ones (like Tasmania and South Australia), even though all regions show some wage growth.</li>
+            <li><strong>National Trends:</strong> The <strong>national average</strong> (AUS) sits around $1,400 by 2024, indicating a positive wage growth trend across Australia, despite regional disparities.</li>
+          </ul>
+          These trends reflect broader economic forces such as population density, industry distribution, and cost of living, shaping the earning potential across Australia.
+        </p>
+      </div>
+
+      <!-- Bar Chart Visualization -->
+      <div id="bar-chart"></div>
+
+      <!-- Bar Chart Analysis -->
+      <div id="textdetails">
+        <h2><center>Gender Income Disparities</center></h2>
+        <p>
+          The bar chart reveals a consistent pattern of **income disparities** between males and females across all states and territories in Australia:
+          <ul>
+            <li><strong>Male Earnings:</strong> In every state, males consistently earn more than females. This is evident by the larger blue section in all bars.</li>
+            <li><strong>ACT and NT Stand Out:</strong> The Australian Capital Territory (ACT) and the Northern Territory (NT) show the largest income differences between genders, with males earning significantly more than females.</li>
+            <li><strong>Smaller Gender Gap in NSW and VIC:</strong> Although the gap still exists, states like New South Wales (NSW) and Victoria (VIC) have a smaller disparity in earnings between males and females compared to other states.</li>
+            <li><strong>General Observation:</strong> While the gender earnings gap is present in all regions, some states have larger disparities than others, highlighting an ongoing issue in wage equality across Australia.</li>
+          </ul>
+        </p>
+      </div>
+
+      <!-- Dot Plot Visualization -->
+      <div id="dot-plot"></div>
+
+      <!-- Dot Plot Analysis -->
+      <div id="textdetails">
+        <h2><center>Income Distribution Across States</center></h2>
+        <p>
+          The dot plot provides a clear view of the **distribution of earnings** across Australia's states and territories:
+          <ul>
+            <li><strong>Earnings Range:</strong> The plot shows the earnings spread from $500 to $1,500 per week. The Australian Capital Territory (ACT) leads with the highest earnings, while Tasmania and South Australia have the lowest.</li>
+            <li><strong>State Clustering:</strong> Most states cluster around the $1,200 to $1,500 range, indicating that, while there are variations, most regions do not deviate significantly in terms of earnings.</li>
+            <li><strong>ACT as an Outlier:</strong> ACT consistently ranks as the highest earning state, significantly above the other regions. This makes it an outlier in the income distribution.</li>
+            <li><strong>National Average:</strong> The national average (AUS) is also displayed in the plot, falling in the middle of the range, indicating that the earnings across most states are relatively balanced with respect to the average.</li>
+          </ul>
+        </p>
+      </div>
+
+      <!-- pie-chart Visualization -->
+      <div id="pie-chart"></div>
+
+
+      <!-- Pie Chart Analysis -->
+      <div id="textdetails">
+        <h2><center>Distribution of Earnings Across Industries</center></h2>
+        <p>
+          The pie chart illustrates the distribution of average weekly earnings across various industries in Australia. This visualization reveals significant disparities:
+          <ul>
+            <li><strong>High Earning Sectors:</strong> Mining and Financial & Insurance Services show the highest earnings, reflecting the economic value and profitability inherent in these sectors.</li>
+            <li><strong>Lower Earning Sectors:</strong> In contrast, Accommodation & Food Services and Retail Trade appear as smaller segments, indicating lower average earnings in these consumer-facing industries.</li>
+            <li><strong>Economic Insights:</strong> This distribution helps highlight sectors that are economically robust and those that might be more vulnerable or offer lower wages on average.</li>
+          </ul>
+          Understanding these dynamics is crucial for economic planning and personal career decisions, as it reflects broader economic trends and sector-specific realities.
+        </p>
+      </div>
+
+      <!-- Conclusion -->
+      <div id="textdetails">
+        <h2><center>Concluding Insights: Navigating Australia’s Economic Landscape</center></h2>
+        <p>
+          Throughout this visual exploration of Australia's earnings landscape, we've uncovered significant insights into the economic disparities across regions, industries, and gender. Each visualization has not only depicted unique aspects of the workforce but also highlighted broader economic implications:
+          <ul>
+            <li><strong>Regional Variations:</strong> Our analysis began with the stark differences in earnings across various states and territories, showing a pronounced divide between regions like the Australian Capital Territory, with its high earnings, and others like Tasmania and South Australia, which lag behind. This regional disparity underscores the uneven distribution of economic prosperity, which may influence migration patterns and regional development strategies.</li>
+            <li><strong>Industry Impact:</strong> The pie chart analysis provided a vivid portrayal of how different sectors contribute to the economy. High-earning industries like Mining and Financial Services contrast sharply with lower-earning sectors such as Retail and Accommodation, reflecting the varied economic value generated across sectors. This diversity stresses the importance of sector-specific policies to enhance growth and stability.</li>
+            <li><strong>Gender Income Gap:</strong> The bar chart analysis revealed enduring gender disparities in earnings within the same regions and industries. This persistent issue highlights the need for continued efforts towards achieving gender equality in the workplace.</li>
+            <li><strong>Overall Economic Growth:</strong> Despite the variations and disparities, the consistent upward trend in earnings across most regions and sectors suggests a positive outlook for Australia's economic growth, although the benefits are not uniformly distributed.</li>
+          </ul>
+          As we reflect on these insights, it becomes clear that while Australia's economic engine continues to grow, there are underlying challenges that need to be addressed to ensure that this growth is inclusive and equitable. Policymakers, business leaders, and community advocates can use this data to forge strategies that not only capitalize on areas of strength but also bolster sectors and regions that are underperforming.
+        </p>
+        <p>Data sources:<br> 
+          - Median weekly earnings: https://www.abs.gov.au/statistics/labour/earnings-and-working-conditions/average-weekly-earnings-australia/latest-release#state-and-territory <br>
+        </p>
+      </div>
+
+    
+  </body>
 </html>
